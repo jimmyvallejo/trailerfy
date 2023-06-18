@@ -27,7 +27,7 @@ const handler = NextAuth({
         try {
           await connectToDB();
 
-          const { password, email } = credentials.body;
+          const { password, email } = credentials;
 
           let user = await User.findOne({ email: email });
 
@@ -48,9 +48,11 @@ const handler = NextAuth({
   callbacks: {
     async session({ session }) {
       let sessionUser = await User.findOne({ email: session.user.email });
+      console.log(sessionUser)
 
       if (sessionUser) {
         session.user.id = sessionUser._id.toString();
+        session.user.username = sessionUser.username
       } else {
         console.log("Session user not found in DB");
       }

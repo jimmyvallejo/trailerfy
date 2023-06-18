@@ -19,7 +19,9 @@ const Nav = () => {
     setProvider();
   },[]);
   
-  
+  useEffect(() => {
+  console.log(session)
+  },[session])
   
   
   return <nav className="flex flex-row">
