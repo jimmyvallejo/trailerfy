@@ -2,6 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Provider from "./components/provider";
 import Nav from "./components/nav";
+import { MovieProvider } from "./components/movieprovider";
+import { SideNav } from "./components/sidenav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body className={inter.className}>
-          <Nav />
-          {children}
+        <MovieProvider>
+          <body className={`${inter.className} max-w-screen`}>
+            <Nav />
+            <SideNav />
+            <div className="h-full ml-60 ">{children}</div>
           </body>
+        </MovieProvider>
       </Provider>
     </html>
   );
