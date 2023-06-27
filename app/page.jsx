@@ -12,8 +12,11 @@ export default function Home() {
   
   
   return (
-    <section className="flex h-screen  justify-center ">
+    <section className="flex h-screen  justify-center flex-col ">
       <LargeMovieCard allMovies={allMovies}/>
+      <div className='w-full mt-10'> 
+
+      </div>
     </section>
   );
 }
